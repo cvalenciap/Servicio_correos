@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>Java EE 6 Starter Application</display-name>
+  
+  <context-param>
+    <param-name>webAppRootKey</param-name>
+    <param-value>sedmail-rest-web</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+    	classpath:/META-INF/spring/applicationContext.xml,
+    	classpath:/META-INF/spring/infrastructure.xml,
+    	classpath:pe/com/sedapal/seguridad/ws/config/applicationContext.xml
+    	,  	classpath:/META-INF/spring/spring-security.xml
+    </param-value>     
+  </context-param>
+  
+  <servlet>
+	<servlet-name>jersey-serlvet</servlet-name>
+<!--     <servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class> -->
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <init-param>
+<!--     	<param-name>com.sun.jersey.config.property.packages</param-name> -->
+    	<param-name>jersey.config.server.provider.packages</param-name>
+        <param-value>pe.com.sedmail.rest.service</param-value>
+    </init-param>
+    <init-param>
+        <param-name>jersey.config.server.provider.classnames</param-name>
+        <param-value>org.glassfish.jersey.media.multipart.MultiPartFeature</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  	
+  <servlet-mapping>
+    <servlet-name>jersey-serlvet</servlet-name>
+    <url-pattern>/sedmail/*</url-pattern>
+  </servlet-mapping>
+  
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <filter>
+   	<filter-name>springSecurityFilterChain</filter-name>
+   	<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+  <filter-mapping>
+   	<filter-name>springSecurityFilterChain</filter-name>
+   	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+ 
+</web-app>

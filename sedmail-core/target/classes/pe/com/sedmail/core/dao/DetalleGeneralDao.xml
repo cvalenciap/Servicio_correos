@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pe.com.sedmail.core.dao.DetalleGeneralDao">
+
+	<resultMap id="detalleGeneralResultMap" type="DetalleGeneral">
+        <result property="idGeneral"			column="N_ID_GENERAL"/>
+		<result property="idDetGeneral"			column="N_ID_DET_GENERAL"/>
+		<result property="desDetGeneral"		column="V_DES_DET_GENERAL"/>
+		<result property="desDetCorta"			column="V_DES_DET_CORTA"/>
+		<result property="valor"				column="V_VALOR"/>
+		<result property="tipoDato"				column="V_TIPO_DATO"/>
+		<result property="longitudDato"			column="V_LONGITUD_DATO"/>
+		<result property="stRegi"				column="V_ST_REGI"/>
+		<result property="descripcionEstado"	column="DES_ESTADO"/>
+    </resultMap>
+	    
+	<parameterMap id="detalleGeneralBusqueda" type="java.util.Map">
+    	<parameter property="PAR_N_ID_DET_GENERAL"  jdbcType="NUMERIC" javaType="java.lang.Integer"		mode="IN"/>
+    	<parameter property="PAR_V_ST_REGI" 		jdbcType="VARCHAR" javaType="java.lang.String"		mode="IN"/>
+    	<parameter property="PAR_OUT_CURSOR"		jdbcType="CURSOR"  javaType="java.sql.ResultSet" 	mode="OUT"	resultMap="detalleGeneralResultMap"/>
+    </parameterMap>
+    
+	<select id="buscarDetalleGeneral" statementType="CALLABLE" parameterMap="detalleGeneralBusqueda">
+		{ CALL PCK_SEDMAIL_GENERALES.PRC_BUSCAR_DET_GENERALES(?,?,?) }
+	</select>
+	
+	<parameterMap id="listaDetalleGeneralBusqueda" type="java.util.Map">
+    	<parameter property="PAR_N_ID_GENERAL"  jdbcType="NUMERIC" javaType="java.lang.Integer"		mode="IN"/>
+    	<parameter property="PAR_OUT_CURSOR"	jdbcType="CURSOR"  javaType="java.sql.ResultSet" 	mode="OUT"	resultMap="detalleGeneralResultMap"/>
+    </parameterMap>
+    
+    <select id="listarDetalleGeneral" statementType="CALLABLE" parameterMap="listaDetalleGeneralBusqueda">
+		{ CALL PCK_SEDMAIL_GENERALES.PRC_LIST_DET_GENERALES(?,?) }
+	</select>
+	
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pe.com.sedmail.core.dao.ProcesoDao">
+   	    	    
+	<resultMap id="resultMap" type="HashMap">
+    </resultMap>
+	<select id="listarProcesos" resultMap="resultMap" parameterType="HashMap">
+		select 
+			  pr.id_proceso
+			, pr.de_proceso 
+		from sedmail.proceso pr 
+		where pr.st_regi = 'A' 
+		order by pr.de_proceso
+	</select>
+
+</mapper>

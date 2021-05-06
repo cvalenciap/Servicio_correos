@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pe.com.sedmail.core.dao.ParametroDao" >
+
+	<resultMap id="parametroResultMap" type="Parametro">
+    </resultMap>
+	    
+	<select id="listarTodos" resultMap="parametroResultMap">
+		SELECT 	
+				p.ns_parametro AS "nsParametro", 
+				p.de_parametro AS "deParametro",
+				p.de_observacion AS "deObservacion",
+				p.in_protegido AS "inProtegido"
+		FROM 	sedmail.PARAMETRO p
+		WHERE 	p.st_regi = 'A' 
+		ORDER BY p.de_parametro
+	</select>
+	
+</mapper>

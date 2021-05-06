@@ -1,0 +1,224 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+  	<artifactId>sedmail-rest</artifactId>
+    <groupId>pe.com.sedmail</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../sedmail-rest/pom.xml</relativePath>
+  </parent>
+  
+  <artifactId>sedmail-rest-web</artifactId>
+  <name>sedmail-rest-web</name>
+  <packaging>war</packaging>
+  
+  <dependencies>
+	<dependency>
+		<groupId>pe.com.sedmail</groupId>
+		<artifactId>sedmail-core</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<type>jar</type>
+	</dependency>
+	
+	<!-- seguridad sedapal -->
+    	<dependency>
+			<groupId>sed-seg-ws-cliente</groupId>
+			<artifactId>sed-seg-ws-cliente</artifactId>
+			<version>1.0.0.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>pe.com.sedapal.seguridad.core.beans</groupId>
+			<artifactId>sed-seg-core-beans</artifactId>
+			<version>1.0.0.0</version>
+		</dependency>
+
+	<!-- LIBRERIAS SPRING FRAMEWORK -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-aop</artifactId>
+		<version>${spring.version}</version>
+		<scope>compile</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-beans</artifactId>
+		<version>${spring.version}</version>
+		<scope>compile</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>${spring.version}</version>
+		<scope>compile</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context-support</artifactId>
+		<version>${spring.version}</version>
+		<scope>compile</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-core</artifactId>
+		<version>${spring.version}</version>
+		<scope>compile</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-tx</artifactId>
+		<version>${spring.version}</version>
+		<scope>compile</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-aspects</artifactId>
+		<version>${spring.version}</version>
+		<scope>compile</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-expression</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-orm</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-web</artifactId>
+		<version>${spring.security.version}</version>
+	</dependency>
+	
+	
+	<!-- INICIO Jersey + Spring -->
+    <dependency>
+	    <groupId>org.glassfish.jersey.media</groupId>
+	    <artifactId>jersey-media-json-jackson</artifactId>
+	    <version>2.17</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.glassfish.jersey.core</groupId>
+	    <artifactId>jersey-server</artifactId>
+	    <version>2.17</version>
+	</dependency>	
+	<dependency>
+	    <groupId>org.glassfish.jersey.containers</groupId>
+	    <artifactId>jersey-container-servlet-core</artifactId>
+	    <version>2.17</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.glassfish.jersey.media</groupId>
+	    <artifactId>jersey-media-multipart</artifactId>
+	    <version>2.19</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.glassfish.jersey.ext</groupId>
+	    <artifactId>jersey-spring3</artifactId>
+	    <version>2.12</version>
+	</dependency>
+	<!-- FIN Jersey + Spring -->
+	
+	<!-- https://mvnrepository.com/artifact/org.jvnet.mimepull/mimepull -->
+	<dependency>
+	    <groupId>org.jvnet.mimepull</groupId>
+	    <artifactId>mimepull</artifactId>
+	    <version>1.9.3</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-config</artifactId>
+		<version>${spring.security.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet.jsp.jstl</groupId>
+		<artifactId>jstl-api</artifactId>
+		<version>1.2-rev-1</version>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>jstl</artifactId>
+		<version>1.2</version>
+	</dependency>
+
+	<!-- utilitarios JERSEY + JSON-->
+	<dependency>
+		<groupId>org.codehaus.jettison</groupId>
+		<artifactId>jettison</artifactId>
+		<version>1.3</version>		
+	</dependency>    
+	<dependency>		
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-mapper-asl</artifactId>
+		<version>1.9.12</version>
+	</dependency>
+	<dependency>		
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-jaxrs</artifactId>
+		<version>1.9.12</version>
+	</dependency>
+	<dependency>		
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-xc</artifactId>
+		<version>1.9.12</version>
+	</dependency>
+	<dependency>		
+		<groupId>javax.xml.stream</groupId>
+		<artifactId>stax-api</artifactId>
+		<version>1.0-2</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>com.fasterxml.jackson.jaxrs</groupId>
+	    <artifactId>jackson-jaxrs-json-provider</artifactId>
+	    <version>2.3.3</version>
+	</dependency>
+	
+	<!--  Libreria GMD -->
+	<dependency> 
+		<groupId>pe.com.gmd.componentes</groupId>
+		<artifactId>GmdUtil</artifactId>
+		<version>4.0</version>
+	</dependency>
+		
+	<!-- GSON -->
+	<dependency>
+		<groupId>com.google.code.gson</groupId>
+		<artifactId>gson</artifactId>
+		<version>2.3.1</version>
+	</dependency>
+	
+	<!-- datasource oracle -->
+	<dependency>
+		<groupId>commons-dbcp</groupId>
+		<artifactId>commons-dbcp</artifactId>
+		<version>${commons-dbcp.version}</version>
+	</dependency>
+	
+  </dependencies>
+
+  <build>
+  	<finalName>${project.artifactId}</finalName>
+	<resources>
+		<resource>
+			<directory>src/main/resources</directory>
+		</resource>
+	</resources>
+  </build>
+  
+</project>
